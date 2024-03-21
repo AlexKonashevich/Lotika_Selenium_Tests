@@ -20,9 +20,9 @@ def test_registration():
         name_input.clear()
         name_input.send_keys('TEST')
         name_input.send_keys(Keys.ENTER)
-        assert DRIVER.find_element(By.CLASS_NAME, 'sc-dZoequ eWsqKP')
+        assert DRIVER.find_element(By.XPATH, "//div[@class='sc-dZoequ eWsqKP']")
     except Exception as ex:
-        print(ex)
+        raise ex
 
 
 def test_authentication():
@@ -35,25 +35,25 @@ def test_authentication():
         pas_input.send_keys(Keys.ENTER)
         time.sleep(3)
     except Exception as ex:
-        print(ex)
+        raise ex
 
 
 def test_open_search():
     try:
-        DRIVER.find_element(By.XPATH, "//a[@class='text-decoration-none']//button[@class='sc-fulCBj iAhrLK']").click()
+        DRIVER.find_element(By.XPATH, "//button[@class='sc-fulCBj iAhrLK']").click()
         time.sleep(5)
         assert DRIVER.find_element(By.XPATH, "//span[contains(text(),'Показать на карте')]")
     except Exception as ex:
-        print(ex)
+        raise ex
 
 
 def test_trial_offer():
     try:
         DRIVER.find_element(By.XPATH, "//span[contains(text(),'Показать на карте')]").click()
         time.sleep(3)
-        assert DRIVER.find_element((By.XPATH, '/html/body/div[2]/div[3]/div/div[3]/div/div/div[3]/button[1]'))
+        assert DRIVER.find_element(By.XPATH, "//button[@class='sc-fhzFiK iSustV']")
     except Exception as ex:
-        print(ex)
+        raise ex
 
 
 def test_trial_accept():
@@ -62,9 +62,9 @@ def test_trial_accept():
         time.sleep(3)
         DRIVER.find_element(By.XPATH, "//span[contains(text(),'Показать на карте')]").click()
         time.sleep(3)
-        assert DRIVER.find_element(By.XPATH, '//*[@id="map-Tcp-"]')
+        assert DRIVER.find_element(By.XPATH, '//*[@id="__next"]/div/div/div[2]/div/div[2]/div[1]')
     except Exception as ex:
-        print(ex)
+        raise ex
     finally:
         DRIVER.close()
         DRIVER.quit()
