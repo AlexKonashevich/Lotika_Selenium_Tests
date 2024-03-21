@@ -12,7 +12,7 @@ DRIVER = webdriver.Chrome(options=options)
 
 def test_registration():
     try:
-        DRIVER.get(url='https://lotika.ru/registration?registration_type=1')
+        DRIVER.get(url='https://dev.lotika.ru/registration?registration_type=1')
         email_input = DRIVER.find_element(By.NAME, 'email')
         email_input.clear()
         email_input.send_keys(TEMP_EMAIL.address)
