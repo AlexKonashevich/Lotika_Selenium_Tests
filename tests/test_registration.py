@@ -22,7 +22,7 @@ def test_registration(driver):
         assert WebDriverWait(driver, 30).until(
             ec.presence_of_element_located((By.XPATH, "//div[@class='sc-dZoequ eWsqKP']")))
     except Exception as ex:
-        return f"Test Auth Failed: {str(ex)}\n"
+        return f"Test Reg Failed: {str(ex)}"
     else:
         msg = temp_email.wait_for_message(timeout=120)
         pas = msg.body

@@ -12,4 +12,4 @@ def test_trial_offer(driver):
         assert WebDriverWait(driver, 30).until(
             ec.presence_of_element_located((By.XPATH, "//button[@class='sc-fhzFiK iSustV']")))
     except Exception as ex:
-        return f"Test Auth Failed: {str(ex)}\n"
+        return f"Test Tr Offer Failed: {str(ex)}"

@@ -6,10 +6,11 @@ from decorators import count_calls
 
 @count_calls
 def test_open_search(driver):
+    driver.get(url='https://dev.lotika.ru')
     try:
         WebDriverWait(driver, 30).until(
-            ec.presence_of_element_located((By.XPATH, "//button[@class='sc-fulCBj iAhrLK']"))).click()
+            ec.presence_of_element_located((By.XPATH, '//*[@id="__next"]/div/div/div[2]/div/div[1]/div/div/a/button/span'))).click()
         assert WebDriverWait(driver, 30).until(
-            ec.presence_of_element_located((By.XPATH, "//span[contains(text(),'Показать на карте')]")))
+            ec.presence_of_element_located((By.XPATH, "//input[@placeholder='Введите ключевое слово']")))
     except Exception as ex:
-        return f"Test Auth Failed: {str(ex)}\n"
+        return f"Test Search Failed: {str(ex)}"
