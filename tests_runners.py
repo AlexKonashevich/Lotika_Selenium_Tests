@@ -136,7 +136,7 @@ def trial_accept_test_runner(repeat_test=1):
 
 
 print(all_tests_runner(repeat_tests=2))
-print(search_test_runner(repeat_test=1))
-print(registration_test_runner(repeat_test=1))
-print(trial_offer_test_runner(repeat_test=1))
-print(trial_accept_test_runner(repeat_test=1))
+# print(search_test_runner(repeat_test=1))
+# print(registration_test_runner(repeat_test=1))
+# print(trial_offer_test_runner(repeat_test=1))
+# print(trial_accept_test_runner(repeat_test=1))
