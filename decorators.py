@@ -7,7 +7,6 @@ def count_calls(func):
     def wrapper(*args, **kwargs):
         nonlocal num_calls
         num_calls += 1
-        print(f"Тест {func} был вызван {num_calls} раз(а)")
         return func(*args, **kwargs), num_calls
     return wrapper
 
