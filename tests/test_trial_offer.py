@@ -1,10 +1,10 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.ui import WebDriverWait
-from tests.test_registration_and_login import TestUserRegistrationAndLogin
+from main import TestRunner
 
 
-class TestTrialOffer(TestUserRegistrationAndLogin):
+class TestTrialOffer(TestRunner):
     base_url = TestRunner.base_url
     driver = TestRunner.driver
     driver.get(url=base_url + 'search')

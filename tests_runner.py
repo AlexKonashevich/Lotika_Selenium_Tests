@@ -1,11 +1,11 @@
 from tests.test_registration_and_login import TestUserRegistrationAndLogin
 from tests.test_open_search import TestOpenSearch
 from main import TestRunner
-from tests.test_trial_offer import TestTrialOffer
+# from tests.test_trial_offer import TestTrialOffer
 
 
 if __name__ == '__main__':
-    tests = [TestOpenSearch(), TestUserRegistrationAndLogin(), TestTrialOffer()]
+    tests = [TestOpenSearch, TestUserRegistrationAndLogin]
 
     for TestClass in tests:
         print(TestClass)

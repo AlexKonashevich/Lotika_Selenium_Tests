@@ -2,6 +2,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.ui import WebDriverWait
 from main import TestRunner
+
+
 class TestOpenSearch(TestRunner):
     def run_test(self):
         base_url = TestRunner.base_url

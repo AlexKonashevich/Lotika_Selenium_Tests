@@ -19,4 +19,3 @@ class TestRunner:
             self.run_test()
         except Exception as err:
             print(f'error: {err}')
-
