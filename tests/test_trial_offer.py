@@ -1,15 +1,14 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.ui import WebDriverWait
-from decorators import count_calls
+from tests.test_registration_and_login import TestUserRegistrationAndLogin
 
 
-@count_calls
-def test_trial_offer(driver):
-    try:
-        WebDriverWait(driver, 30).until(
-            ec.presence_of_element_located((By.XPATH, "//span[contains(text(),'Показать на карте')]"))).click()
-        assert WebDriverWait(driver, 30).until(
-            ec.presence_of_element_located((By.XPATH, "//button[@class='sc-fhzFiK iSustV']")))
-    except Exception as ex:
-        return f"Test Tr Offer Failed: {str(ex)}"
+class TestTrialOffer(TestUserRegistrationAndLogin):
+    base_url = TestRunner.base_url
+    driver = TestRunner.driver
+    driver.get(url=base_url + 'search')
+    WebDriverWait(driver, 30).until(
+        ec.presence_of_element_located((By.XPATH, "//span[contains(text(),'Показать на карте')]"))).click()
+    assert WebDriverWait(driver, 30).until(
+        ec.presence_of_element_located((By.XPATH, "//button[@class='sc-fhzFiK iSustV']")))
