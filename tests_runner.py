@@ -1,20 +1,24 @@
-from tests.test_registration_and_login import TestUserRegistrationAndLogin
-from tests.test_open_search import TestOpenSearch
-from main import TestRunner
-# from tests.test_trial_offer import TestTrialOffer
+from selenium import webdriver
+test_calls = []
 
 
-if __name__ == '__main__':
-    tests = [TestOpenSearch, TestUserRegistrationAndLogin]
+class TestRunner:
 
-    for TestClass in tests:
-        print(TestClass)
-        test = TestClass()
-        test.run_test_task()
+    def __init__(self):
+        self.base_url = 'https://dev.lotika.ru/'
+        options = webdriver.ChromeOptions()
+        self.driver = webdriver.Chrome(options=options)
 
-    TestRunner.driver.close()
-    TestRunner.driver.quit()
+    def run_test(self):
+        raise Exception('Method should be implemented')
 
-    print('all test calls')
-    for i in tests:
-        print(i.__name__)
+    def run_test_task(self):
+        test_calls.append(self.__class__.__name__)
+        try:
+
+            self.run_test()
+        except Exception as err:
+            print(f'error: {err}')
+        finally:
+            self.driver.close()
+            self.driver.quit()

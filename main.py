@@ -1,21 +1,14 @@
-from selenium import webdriver
-test_calls = []
+from tests.test_registration_and_login import TestUserRegistrationAndLogin
+from tests.test_open_search import TestOpenSearch
+from tests.test_trial_map import TestTrialMap
 
 
-class TestRunner:
-    base_url = 'https://dev.lotika.ru/'
-    options = webdriver.ChromeOptions()
-    driver = webdriver.Chrome(options=options)
+if __name__ == '__main__':
+    tests = [TestOpenSearch, TestUserRegistrationAndLogin, TestTrialMap]
 
-    def __init__(self):
-        pass
-
-    def run_test(self):
-        raise Exception('Method should be implemented')
-
-    def run_test_task(self):
-        test_calls.append(self.__class__.__name__)
-        try:
-            self.run_test()
-        except Exception as err:
-            print(f'error: {err}')
+    for TestClass in tests:
+        test = TestClass()
+        test.run_test_task()
+    print('all test calls')
+    for i in tests:
+        print(i.__name__)
