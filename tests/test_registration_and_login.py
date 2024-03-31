@@ -1,5 +1,5 @@
 from tests_runner import TestRunner
-from create_auth_user import create_auth_user
+from tests.create_auth_user import create_auth_user
 
 
 class TestUserRegistrationAndLogin(TestRunner):

@@ -1,13 +1,20 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.ui import WebDriverWait
+from tests.create_auth_user import create_auth_user
+from tests_runner import TestRunner
 
 
-def test_folder_new(driver):
-    try:
-        driver.get(url='https://dev.lotika.ru/search')
+class TestNewFolder(TestRunner):
+    def run_test(self):
+        create_auth_user(driver=self.driver)
+        base_url = self.base_url
+        driver = self.driver
+        driver.get(url=base_url + 'search')
         WebDriverWait(driver, 30).until(
-            ec.presence_of_element_located((By.CSS_SELECTOR, "body > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > a:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(3) > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > button:nth-child(1)"))).click()
+            ec.presence_of_element_located((By.XPATH, "//span[contains(text(),'Папка')]"))).click()
+        WebDriverWait(driver, 30).until(
+            ec.presence_of_element_located((By.XPATH, "//button[@class='sc-fhzFiK iSustV']"))).click()
         WebDriverWait(driver, 30).until(
             ec.presence_of_element_located((By.XPATH, "//span[contains(text(),'Новая папка')]"))).click()
         folder_name = WebDriverWait(driver, 30).until(
@@ -20,5 +27,3 @@ def test_folder_new(driver):
             ec.presence_of_element_located((By.XPATH, "//span[contains(text(),'Закрыть')]"))).click()
         assert WebDriverWait(driver, 30).until(
             ec.presence_of_element_located((By.XPATH, "//span[@class='sc-dhKdcB sc-lbJcrp gnnHMu gJmCFy']")))
-    except Exception as ex:
-        return f"Test Folder New Failed: {str(ex)}"

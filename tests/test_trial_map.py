@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.ui import WebDriverWait
 import time
-from create_auth_user import create_auth_user
+from tests.create_auth_user import create_auth_user
 from tests_runner import TestRunner
 
 
