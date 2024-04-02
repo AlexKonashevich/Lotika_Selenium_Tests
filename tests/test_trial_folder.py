@@ -10,7 +10,6 @@ class TestNewFolder(TestRunner):
         base_url = self.base_url
         driver = self.driver
         self.create_auth_user()
-        # driver.get(url=base_url + 'search')
         WebDriverWait(driver, 30).until(
             ec.presence_of_element_located((By.XPATH, "//button//span[@class='sc-dhKdcB sc-fUBkdm gnnHMu gWXSGd'][contains(text(),'Папка')]"))).click()
         WebDriverWait(driver, 30).until(
