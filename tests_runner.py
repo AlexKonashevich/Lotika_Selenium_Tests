@@ -16,9 +16,8 @@ class TestRunner:
         options = webdriver.ChromeOptions()
         self.driver = webdriver.Chrome(options=options)
 
-    def create_auth_user(self):
+    def create_auth_user(self, driver):
         temp_email = EMail()
-        driver = self.driver
         base_url = self.base_url
         driver.get(url=f'{base_url}registration?registration_type=1')
         email_input = WebDriverWait(driver, 30).until(

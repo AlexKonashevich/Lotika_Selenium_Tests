@@ -7,10 +7,8 @@ from tests_runner import TestRunner
 
 class TestTrialMap(TestRunner):
     def run_test(self):
-        self.create_auth_user()
-        base_url = self.base_url
         driver = self.driver
-        self.create_auth_user()
+        self.create_auth_user(driver)
         WebDriverWait(driver, 30).until(
             ec.presence_of_element_located((By.XPATH, "//button[@class='sc-kjNGdX fxavll']//*[name()='svg']"))).click()
         WebDriverWait(driver, 30).until(
