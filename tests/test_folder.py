@@ -6,7 +6,7 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.ui import WebDriverWait
 from tests_runner import TestRunner
 
-
+# Need to add id to buttons edit folder and delete folder
 class TestFolder(TestRunner):
     def run_test(self):
         driver = self.driver

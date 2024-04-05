@@ -5,8 +5,7 @@ from tests.test_folder import TestFolder
 
 
 if __name__ == '__main__':
-    # tests = [TestOpenSearch, TestUserRegistrationAndLogin, TestTrialMap, TestFolder]
-    tests = [TestFolder]
+    tests = [TestOpenSearch, TestUserRegistrationAndLogin, TestTrialMap, TestFolder]
 
     for TestClass in tests:
         test = TestClass()
