@@ -12,4 +12,4 @@ class TestOpenSearch(TestRunner):
         WebDriverWait(driver, 30).until(ec.presence_of_element_located((
             By.XPATH, '//*[@id="__next"]/div/div/div[2]/div/div[1]/div/div/a/button/span'))).click()
         assert WebDriverWait(driver, 30).until(ec.presence_of_element_located((
-                By.XPATH, "//input[@placeholder='Введите ключевое слово']")))
+                By.XPATH, "//input[@placeholder='Введите ключевое слово']"))), 'Ошибка открытия поиска'

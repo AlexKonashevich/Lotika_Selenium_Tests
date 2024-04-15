@@ -6,7 +6,7 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.ui import WebDriverWait
 from tests_runner import TestRunner
 
-# Need to add id to buttons edit folder and delete folder
+
 class TestFolder(TestRunner):
     def run_test(self):
         driver = self.driver
@@ -29,12 +29,12 @@ class TestFolder(TestRunner):
         folder_name.send_keys(Keys.ENTER)
         time.sleep(3)
         assert WebDriverWait(driver, 30).until(
-            ec.presence_of_element_located((By.XPATH, "//button//span[contains(text(),'TEST')]")))
+            ec.presence_of_element_located((By.XPATH, "//button//span[contains(text(),'TEST')]"))), 'Ошибка создания папки'
         WebDriverWait(driver, 30).until(
             ec.presence_of_element_located((By.XPATH, "//button//span[contains(text(),'TEST')]"))).click()
-        # Need to add id to buttons edit folder and delete folder
+        time.sleep(3)
         WebDriverWait(driver, 30).until(
-            ec.presence_of_element_located((By.CSS_SELECTOR, "svg"))).click()
+            ec.presence_of_element_located((By.XPATH, "//button[@data-el='edit-folder-button']//*[name()='svg']"))).click()
         time.sleep(3)
         folder_rename = WebDriverWait(driver, 30).until(
             ec.presence_of_element_located((By.XPATH, "//input[@name='folderName']")))
@@ -42,18 +42,16 @@ class TestFolder(TestRunner):
         folder_rename.send_keys(Keys.ENTER)
         time.sleep(3)
         assert WebDriverWait(driver, 30).until(
-            ec.presence_of_element_located((By.XPATH, "//h3[@class='sc-eqUAAy sc-fhOrUh jlFgkF jpxXZK']")))
-        print('hhhh')
+            ec.presence_of_element_located((By.XPATH, "//button[contains(text(),'Удалить все лоты')]"))), 'Ошибка переименования папки'
         WebDriverWait(driver, 30).until(
             ec.presence_of_element_located((By.XPATH, "//button[contains(text(),'Удалить все лоты')]"))).click()
         WebDriverWait(driver, 30).until(
             ec.presence_of_element_located((By.XPATH, "//span[contains(text(),'Да')]"))).click()
         assert WebDriverWait(driver, 30).until(
-            ec.presence_of_element_located((By.XPATH, "//span[@class='sc-gsFSXq sc-jDGquE cTMarb cIjfas']")))
-        # Need to add id to buttons edit folder and delete folder
+            ec.presence_of_element_located((By.XPATH, "//span[contains(text(),'0')]"))), 'Ошибка удаления содержимого папки'
         WebDriverWait(driver, 30).until(
-            ec.presence_of_element_located((By.XPATH, "//button[2]//*[name()='svg']//*[name()='path' and contains(@d,'m11.055 6.')]"))).click()
+            ec.presence_of_element_located((By.XPATH, "//button[@data-el='delete-folder-button']//*[name()='svg']"))).click()
         WebDriverWait(driver, 30).until(
             ec.presence_of_element_located((By.XPATH, "//span[contains(text(),'Да')]"))).click()
         assert WebDriverWait(driver, 30).until(
-            ec.presence_of_element_located((By.XPATH, "//input[@placeholder='Введите ключевое слово']")))
+            ec.presence_of_element_located((By.XPATH, "//input[@placeholder='Введите ключевое слово']"))), 'Ошибка удаления папки'

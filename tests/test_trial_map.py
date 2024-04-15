@@ -10,11 +10,12 @@ class TestTrialMap(TestRunner):
         driver = self.driver
         self.create_auth_user(driver)
         WebDriverWait(driver, 30).until(
-            ec.presence_of_element_located((By.XPATH, "//button[@class='sc-kjNGdX fxavll']//*[name()='svg']"))).click()
+            ec.presence_of_element_located((By.XPATH, "//span[contains(text(),'Показать на карте')]"))).click()
         WebDriverWait(driver, 30).until(
-            ec.presence_of_element_located((By.XPATH, "//button[@class='sc-fhzFiK iSustV']"))).click()
-        time.sleep(5)
+            ec.presence_of_element_located((By.XPATH, "//button[contains(text(),'Попробовать бесплатно')]"))).click()
+        time.sleep(3)
         WebDriverWait(driver, 30).until(
             ec.presence_of_element_located((By.XPATH, "//span[contains(text(),'Показать на карте')]"))).click()
+        time.sleep(5)
         assert WebDriverWait(driver, 30).until(
-            ec.presence_of_element_located((By.XPATH, '//*[@id="__next"]/div/div/div[2]/div/div[2]')))
+            ec.presence_of_element_located((By.XPATH, "//span[@class='show-full-card']"))), 'Ошибка открытия карты'
