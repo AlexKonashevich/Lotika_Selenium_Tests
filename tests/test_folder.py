@@ -23,7 +23,7 @@ class TestFolder(TestRunner):
         WebDriverWait(driver, 30).until(
             ec.presence_of_element_located((By.XPATH, "//span[contains(text(),'Новая папка')]"))).click()
         folder_name = WebDriverWait(driver, 30).until(
-            ec.presence_of_element_located((By.XPATH, "// input[ @ placeholder = 'Название папки']")))
+            ec.presence_of_element_located((By.XPATH, "//input[@placeholder='Название папки']")))
         folder_name.clear()
         folder_name.send_keys('TEST')
         folder_name.send_keys(Keys.ENTER)
