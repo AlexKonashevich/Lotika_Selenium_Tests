@@ -1,3 +1,5 @@
+import time
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -29,6 +31,9 @@ class TestRunner:
         name_input.send_keys(Keys.ENTER)
         assert WebDriverWait(driver, 30).until(
             ec.presence_of_element_located((By.XPATH, "//div[@class='sc-dZoequ eWsqKP']"))), 'Ошибка регистрации'
+        time.sleep(20)
+        WebDriverWait(driver, 30).until(
+            ec.presence_of_element_located((By.XPATH, "//span[contains(text(),'Ок')]"))).click()
         msg = temp_email.wait_for_message(timeout=120)
         pas = msg.body
         pas_input = WebDriverWait(driver, 30).until(
@@ -45,7 +50,6 @@ class TestRunner:
     def run_test_task(self):
         test_calls.append(self.__class__.__name__)
         try:
-
             self.run_test()
         except Exception as err:
             print(f'error: {err}')

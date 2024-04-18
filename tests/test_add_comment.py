@@ -9,7 +9,6 @@ from tests_runner import TestRunner
 
 class TestAddComment(TestRunner):
     def run_test(self):
-        base_url = self.base_url
         driver = self.driver
         self.create_auth_user(driver)
         time.sleep(3)
@@ -29,18 +28,19 @@ class TestAddComment(TestRunner):
         WebDriverWait(driver, 30).until(
             ec.presence_of_element_located((By.XPATH, '//a[@data-hover-off="true"]'))).click()
         time.sleep(3)
-        write_comment = WebDriverWait(driver, 30).until(
-            ec.presence_of_element_located((By.XPATH, "//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr']")))
+        write_comment = WebDriverWait(driver, 30).until(ec.presence_of_element_located((
+            By.XPATH, "//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr']")))
         write_comment.send_keys('e2e_test')
         WebDriverWait(driver, 30).until(
             ec.presence_of_element_located((By.XPATH, "//button[@data-el='send_btn']"))).click()
         WebDriverWait(driver, 30).until(
             ec.presence_of_element_located((By.XPATH, "//button[contains(text(),'Попробовать бесплатно')]"))).click()
         time.sleep(3)
-        write_comment = WebDriverWait(driver, 30).until(
-            ec.presence_of_element_located((By.XPATH, "//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr']")))
+        write_comment = WebDriverWait(driver, 30).until(ec.presence_of_element_located((
+            By.XPATH, "//div[@class='public-DraftStyleDefault-block public-DraftStyleDefault-ltr']")))
         write_comment.send_keys('e2e_test')
         WebDriverWait(driver, 30).until(
             ec.presence_of_element_located((By.XPATH, "//button[@data-el='send_btn']"))).click()
         assert WebDriverWait(driver, 30).until(
-            ec.presence_of_element_located((By.XPATH, "//span[contains(text(),'e2e_test')]")))
+            ec.presence_of_element_located((By.XPATH, "//span[contains(text(),'e2e_test')]"))),\
+            'Ошибка создание комментария'
