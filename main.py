@@ -1,18 +1,20 @@
 from tests.test_registration_and_login import TestUserRegistrationAndLogin
-from tests.test_open_search import TestOpenSearch
+from tests.test_search import TestSearch
 from tests.test_trial_map import TestTrialMap
 from tests.test_folder import TestFolder
 from tests.test_add_comment import TestAddComment
 from tests.test_search_sample import TestSearchSample
+from tests.test_team import TestTeam
 
 if __name__ == '__main__':
     tests = [
-        TestOpenSearch,
+        TestSearch,
         TestUserRegistrationAndLogin,
         TestTrialMap,
         TestFolder,
         TestAddComment,
-        TestSearchSample
+        TestSearchSample,
+        TestTeam,
     ]
 
     for TestClass in tests:
