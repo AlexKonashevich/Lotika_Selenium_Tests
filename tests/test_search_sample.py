@@ -54,4 +54,4 @@ class TestSearchSample(TestRunner):
         WebDriverWait(driver, 30).until(
             ec.presence_of_element_located((By.XPATH, "//li[@tabindex='-1']"))).click()
         assert WebDriverWait(driver, 30).until(ec.presence_of_element_located((
-            By.XPATH, "//h4[@class='sc-dcJsrY sc-eTTeRg iQFFuG hOgSpT']"))).text == res
+            By.XPATH, "//h4[@class='sc-dcJsrY sc-eTTeRg iQFFuG hOgSpT']"))).text == res, 'Ошибка шаблона поиска'
