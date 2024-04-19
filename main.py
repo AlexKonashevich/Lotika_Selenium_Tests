@@ -5,6 +5,7 @@ from tests.test_folder import TestFolder
 from tests.test_add_comment import TestAddComment
 from tests.test_search_sample import TestSearchSample
 from tests.test_team import TestTeam
+from tests.test_boards import TestBoards
 
 if __name__ == '__main__':
     tests = [
@@ -15,6 +16,7 @@ if __name__ == '__main__':
         TestAddComment,
         TestSearchSample,
         TestTeam,
+        TestBoards
     ]
 
     for TestClass in tests:
